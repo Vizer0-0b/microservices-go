@@ -3,7 +3,7 @@ package utils
 import (
   "testing"
 
-  "github.com/gbrayhan/microservices-go/utils"
+	"github.com/plasticube/microservices-inspect/utils"
 )
 
 func TestGetMD5Hash(t *testing.T) {

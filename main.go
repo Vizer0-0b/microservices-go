@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/gbrayhan/microservices-go/config"
-	errorsController "github.com/gbrayhan/microservices-go/controllers/errors"
+	"github.com/plasticube/microservices-inspect/config"
+	errorsController "github.com/plasticube/microservices-inspect/controllers/errors"
 	"net/http"
 	"strings"
 	"time"
@@ -13,8 +13,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 
-	"github.com/gbrayhan/microservices-go/middlewares"
-	"github.com/gbrayhan/microservices-go/routes"
+	"github.com/plasticube/microservices-inspect/middlewares"
+	"github.com/plasticube/microservices-inspect/routes"
 )
 
 func main() {

@@ -2,9 +2,9 @@ package models
 
 import (
   "encoding/json"
-  "github.com/gbrayhan/microservices-go/config"
-  modelErrors "github.com/gbrayhan/microservices-go/models/errors"
   "github.com/jinzhu/gorm"
+  "github.com/plasticube/microservices-inspect/config"
+  modelErrors "github.com/plasticube/microservices-inspect/models/errors"
   "time"
 )
 
@@ -68,7 +68,6 @@ func GetMedicineByID(medicine *Medicine, id int) (err error) {
     }
   }
 
-
   return
 }
 
@@ -98,8 +97,6 @@ func UpdateMedicine(id int, medicineMap map[string]interface{}) (medicine Medici
   }
 
   err = config.DB.Where("id = ?", id).First(&medicine).Error
-
-
 
   return
 }

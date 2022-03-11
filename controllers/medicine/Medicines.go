@@ -2,14 +2,14 @@ package medicine
 
 import (
   "errors"
-  "github.com/gbrayhan/microservices-go/controllers"
   "github.com/gin-gonic/gin"
+  "github.com/plasticube/microservices-inspect/controllers"
   "net/http"
   "strconv"
 
-  _ "github.com/gbrayhan/microservices-go/controllers/errors"
-  "github.com/gbrayhan/microservices-go/models"
-  errorModels "github.com/gbrayhan/microservices-go/models/errors"
+  _ "github.com/plasticube/microservices-inspect/controllers/errors"
+  "github.com/plasticube/microservices-inspect/models"
+  errorModels "github.com/plasticube/microservices-inspect/models/errors"
 )
 
 // NewMedicine godoc

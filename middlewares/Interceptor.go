@@ -8,8 +8,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/gbrayhan/microservices-go/services"
-	"github.com/gbrayhan/microservices-go/utils"
+	"github.com/plasticube/microservices-inspect/services"
+	"github.com/plasticube/microservices-inspect/utils"
 )
 
 type bodyLogWriter struct {

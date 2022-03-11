@@ -1,5 +1,40 @@
 basePath: /v1
 definitions:
+  inspection.NewInspectionRequest:
+    properties:
+      address:
+        example: Beijing Tienanmen
+        type: string
+      belong_network:
+        example: net work name;column:belong_network
+        type: string
+      create_time:
+        example: "2021-02-24 20:19:39"
+        type: string
+      examine_time:
+        example: "2021-02-24 20:19:39"
+        type: string
+      inspect_time:
+        example: "2021-02-24 20:19:39"
+        type: string
+      inspectorId:
+        example: 336600
+        type: integer
+      remark:
+        example: remarks here.
+        type: string
+      result:
+        example: inspection result
+        type: string
+      status:
+        example: 0
+        type: integer
+      target:
+        example: "34342543634"
+        type: string
+    required:
+    - inspectorId
+    type: object
   medicine.MessageResponse:
     properties:
       message:
@@ -25,6 +60,45 @@ definitions:
     - laboratory
     - name
     type: object
+  models.Inspection:
+    properties:
+      address:
+        example: Beijing Tiananmen
+        type: string
+      belong_network:
+        example: net work name;column:belong_network
+        type: string
+      create_time:
+        example: "2021-02-24 20:19:39"
+        type: string
+      examine_time:
+        example: "2021-02-24 20:19:39"
+        type: string
+      id:
+        example: 123
+        type: integer
+      inspect_time:
+        example: "2021-02-24 20:19:39"
+        type: string
+      inspector_id:
+        example: 336600
+        type: integer
+      "no":
+        example: "1231231"
+        type: string
+      remark:
+        example: remarks here.
+        type: string
+      result:
+        example: inspection result
+        type: string
+      status:
+        example: 0
+        type: integer
+      target:
+        example: "34342543634"
+        type: string
+    type: object
   models.Medicine:
     properties:
       created_at:
@@ -49,6 +123,24 @@ definitions:
         example: "2021-02-24 20:19:39"
         type: string
     type: object
+  svc.PageResp:
+    properties:
+      code:
+        type: integer
+      data: {}
+      page_count:
+        type: integer
+      page_index:
+        type: integer
+      page_size:
+        type: integer
+    type: object
+  svc.Resp:
+    properties:
+      code:
+        type: integer
+      data: {}
+    type: object
 host: localhost:8080
 info:
   contact:
@@ -63,6 +155,107 @@ info:
   title: Boilerplate Golang
   version: "1.0"
 paths:
+  /inspection:
+    get:
+      description: Get all Inspections on the system
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/svc.Resp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/svc.Resp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/svc.Resp'
+      summary: Get all Inspections
+      tags:
+      - inspection
+    post:
+      consumes:
+      - application/json
+      description: Create new inspection on the system
+      parameters:
+      - description: body data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/inspection.NewInspectionRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Inspection'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/svc.Resp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/svc.Resp'
+      summary: Create New Inspection
+      tags:
+      - inspection
+  /inspection/{inspection_id}:
+    get:
+      description: Get Inspections by Id on the system
+      parameters:
+      - description: id of inspection
+        in: path
+        name: inspection_id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Inspection'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/svc.Resp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/svc.Resp'
+      summary: Get inspections by Id
+      tags:
+      - inspection
+  /inspection/page:
+    get:
+      description: Get all Inspections by page on the system
+      parameters:
+      - description: Page size
+        in: query
+        name: page_size
+        type: integer
+      - description: Page index
+        in: query
+        name: page_index
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/svc.PageResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/svc.Resp'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/svc.Resp'
+      summary: Get all Inspections by page
+      tags:
+      - inspection
   /medicine:
     get:
       description: Get all Medicines on the system

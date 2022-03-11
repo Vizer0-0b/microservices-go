@@ -1,13 +1,19 @@
 package errors
 
 import (
+  "github.com/plasticube/microservices-inspect/controllers/svc"
   "net/http"
 
-  models "github.com/gbrayhan/microservices-go/models/errors"
   "github.com/gin-gonic/gin"
+  models "github.com/plasticube/microservices-inspect/models/errors"
 )
 
 type MessagesResponse struct {
+  Message string `json:"message"`
+}
+
+type ServerResponse struct {
+  Code int `json:"code"`
   Message string `json:"message"`
 }
 
@@ -47,6 +53,7 @@ func Handler(c *gin.Context) {
       }
     }
 
+    c.JSON(http.StatusInternalServerError, ServerResponse{Code:svc.ERROR, Message: errs.String()})
     return
   }
 }

@@ -25,7 +25,7 @@ func GormOpen() (gormDB *gorm.DB, err error) {
     return nil, err
   }
   gormDB, err = gorm.Open(mysql.Open(infoDatabase.Write.DriverConn), &gorm.Config{
-    Logger: logger.Default.LogMode(logger.Silent),
+    Logger: logger.Default.LogMode(logger.Info),
   })
   if err != nil {
     return

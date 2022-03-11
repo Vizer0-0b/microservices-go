@@ -3,8 +3,8 @@ package medicine
 import (
   "errors"
   "fmt"
-  errorModels "github.com/gbrayhan/microservices-go/models/errors"
   "github.com/go-playground/validator/v10"
+  errorModels "github.com/plasticube/microservices-inspect/models/errors"
   "strings"
 )
 
